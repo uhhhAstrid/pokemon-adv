@@ -8,7 +8,8 @@ class Player():
         self.name = name
         self.gender = gender
         self.attack = 0
-        self.defense = 0 
+        self.defense = 0
+        self.pokemon = [] 
     
     def act(self):
         action = input("'C' to try and catch a pokemon, 'S' to visit shop, 'B' to battle, 'P' to see caught pokemon, or 'Q' to quit. \n")
@@ -46,13 +47,15 @@ def catch(player):
     action = action.strip()
     action = action.upper()
     if(action == 'C'):
-        # randomly generate a number between 1 and 100
-        # add the player's level
-        # if the number is more than 50 after adding the player's level, they catch the pokemon
-            # add caught pokemon to the player
-        # print out whether they failed or succeeded
-        # return to action menu
-        player.act()
+        numberToBeat = 50
+        catchChance = random.randint(0,100) + player.level
+
+        if catchChance > numberToBeat:
+            print(f"You caught a {random_pokemon.name}!!!!! It's level {random_pokemon.LVL}!")
+            player.pokemon.append(random_pokemon)
+        else:
+            print(f"You failed to catch the {random_pokemon.name}. It ran away!")
+        catch(player)
     elif(action == 'P'):
         catch(player)
     elif(action == 'X'):
@@ -88,8 +91,11 @@ def battle(player):
     pass
 
 def view_pokemon(player):
-    # print out the player's pokemon
-    pass
+    if player.pokemon: # checks to see if list is empty or not
+        for pokemon in player.pokemon:
+            print(f"\nName: {pokemon.name}, Level: {pokemon.LVL}, Type: {pokemon.type}, Weakness: {pokemon.weakness}")
+            for move in pokemon.moves:
+                print(f"Move: {move.name}, Power: {move.power}, Type: {move.type}")
 
 def eliteFour(player):
     # fight the elite four
