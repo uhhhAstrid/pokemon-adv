@@ -1,5 +1,6 @@
 import random
 import pokemon
+import time
 
 class Player():
     def __init__(self, name, gender):
@@ -9,7 +10,8 @@ class Player():
         self.gender = gender
         self.attack = 0
         self.defense = 0
-        self.pokemon = [] 
+        self.pokemon = []
+        self.items = [] 
     
     def act(self):
         action = input("'C' to try and catch a pokemon, 'S' to visit shop, 'B' to battle, 'P' to see caught pokemon, or 'Q' to quit. \n")
@@ -62,10 +64,34 @@ def catch(player):
         player.act()
 
 def shop(player):
-    # show the shop
-    # allow player to make purchases
+    print("Hi there! Welcome to my shop!!")
+    time.sleep(1)
+    print("~~~ ✨🎵shop music🎵✨ ~~~")
+    time.sleep(1)
+    print("PLEASE buy something PLEASEEEEEEEE 😭😭😭🥺🥺🥺!!!👉👈!!\n\n")
+    time.sleep(3)
+    print("~~~ after an awkward pause, the shopkeeper is drowned out by ✨🎵soothing shop music🎵✨ ~~~")
+    
+    # make the items (I'll clean this up later)
+    potion = pokemon.Item("potion", 10)
+    pokeball = pokemon.Item("pokeball", 5)
+    tastySandwich = pokemon.Item("A tasty sandwich. 🥪. Yum!", 999)
+    
+    # make the shop
+    shop = pokemon.Shop()
+    
+    # stock the shop with the item
+    shop.items.append(potion)
+    shop.items.append(pokeball)
+    shop.items.append(tastySandwich)
+
+    for item in shop:
+        print(f"{item.name}: {item.cost}")
+
+    print("What would you like to buy?")
+    # take in player input
     # check for enough money
-    pass
+    # if they have enough money, give them the items.
 
 def battle(player):
     # start a battle between the player and an enemy trainer

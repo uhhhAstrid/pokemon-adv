@@ -24,6 +24,15 @@ class Move:
         self.name = name
         self.power = power
 
+class Shop:
+    def __init__(self):
+        items = []
+
+class Item:
+    def __init__(self, name, cost):
+        self.name = name
+        self.cost = cost
+
 def loadNameList():
     with open("names.txt", "r") as name_file:
         names = name_file.read().splitlines()
