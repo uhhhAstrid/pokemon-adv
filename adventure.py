@@ -85,7 +85,7 @@ def shop(player):
     shop.items.append(pokeball)
     shop.items.append(tastySandwich)
 
-    for item in shop:
+    for item in shop.items:
         print(f"{item.name}: {item.cost}")
 
     print("What would you like to buy?")
@@ -114,12 +114,52 @@ def battle(player):
         # 8. ask player to make a choice just like in the act() method
         # 9. use an if statement to run the right code based on their choice
             # either use a move, swap pokemon, punch enemy.
-    pass
+    
+    # choose a pokemon to send out first
+    view_pokemon(player)
+    poke_choice = input ("Which pokemon would you like to have out for this battle? enter the pokemon's ID [0-30]")
+    chosen_pokemon = player.pokemon[poke_choice]
+
+    # ask the player what they are doing on their turn
+    action = input("Use a move for your pokemon (M), Swap Pokemon (S), Punch enemy trainer (P), Run away (R)")
+    action = action.upper()
+    action = action.strip()
+    if action == "M":
+        # choose a pokemon move
+            for move in chosen_pokemon.moves:
+                move_number = 0 
+                print(move.name, move.power, move_number)
+                move_number = move_number + 1
+            # print out moves
+            # ask player to pick one
+
+        # attack with move
+            # enemy pokemon health - pokemon attack + pokemon move power * 2 (if weak)
+
+        pass
+    elif action == "S":
+        # ask which pokemon to switch to
+        # 
+        pass
+    elif action == "P":
+        # punch enemy trainer
+        # enemy trainer health - player attack
+        # if enemy trainer health at 0,
+        # you win!!!
+        pass
+    elif action =="R":
+        # end battle
+        # lose some money
+        # ask player for new action
+        pass
+
 
 def view_pokemon(player):
     if player.pokemon: # checks to see if list is empty or not
+        poke_ID = 0
         for pokemon in player.pokemon:
-            print(f"\nName: {pokemon.name}, Level: {pokemon.LVL}, Type: {pokemon.type}, Weakness: {pokemon.weakness}")
+            print(f"\nName: {pokemon.name}, Level: {pokemon.LVL}, Type: {pokemon.type}, Weakness: {pokemon.weakness}, {poke_ID}")
+            poke_ID = poke_ID + 1
             for move in pokemon.moves:
                 print(f"Move: {move.name}, Power: {move.power}, Type: {move.type}")
 

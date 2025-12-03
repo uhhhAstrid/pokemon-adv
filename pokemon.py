@@ -26,7 +26,7 @@ class Move:
 
 class Shop:
     def __init__(self):
-        items = []
+        self.items = []
 
 class Item:
     def __init__(self, name, cost):
