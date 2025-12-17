@@ -5,6 +5,8 @@ class EnemyTrainer:
         self.name = name
         self.pokemon = pokemon
         self.money = random.randint(1,99999)
+        self.HP = 50
+        self.ATK = 10
 
 class Pokemon:
     def __init__(self, type, name, moves, weakness):
